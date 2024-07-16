@@ -118,7 +118,7 @@ Sequential <- R6::R6Class("Sequential", list(
     self$learning_rate <- learning_rate
     nrows <- nrow(input)
     for(epoch in seq_len(epochs)){
-      if(epoch %% verbose == 0) print(epoch)
+      if(epoch %% verbose == 0) cat(epoch, "\n")
       rows <- sample.int(nrows, batch_size)
       self$feed_forward(input[rows, , drop=FALSE])
       self$backpropagate(expected[rows, , drop=FALSE])
