@@ -1,0 +1,12 @@
+Package: percept
+Title: Feed-Forward Neural Networks
+Version: 0.0.0.9000
+Authors@R: 
+    person("Harry", "Thompson", email = "harry@mayesfield.uk", role = c("aut", "cre"))
+Description: Build feed-forward neural networks with multiple hidden layers and activation functions.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE, r6 = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    R6
