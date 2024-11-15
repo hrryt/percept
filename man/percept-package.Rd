@@ -8,6 +8,14 @@
 \description{
 Build feed-forward neural networks with multiple hidden layers and activation functions.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/hrryt/percept}
+  \item Report bugs at \url{https://github.com/hrryt/percept/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Harry Thompson \email{harry@mayesfield.uk}
 

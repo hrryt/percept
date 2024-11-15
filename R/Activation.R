@@ -21,6 +21,9 @@
 #' @export
 Activation <- R6::R6Class("Activation", list(
 
+  #' @field name Name of the activation function.
+  name = NULL,
+
   #' @field fun Activation function.
   fun = NULL,
 
@@ -28,24 +31,26 @@ Activation <- R6::R6Class("Activation", list(
   der = NULL,
 
   #' @description Creates a new instance of this [R6][R6::R6Class] class.
+  #' @param name Name of the activation function.
   #' @param fun Activation function.
   #' @param der Derivative function of the activation function.
   #' @return `NULL`.
-  initialize = function(fun, der){
+  initialize = function(name, fun, der){
+    self$name <- name
     self$fun <- fun
     self$der <- der
-    NULL
+    invisible()
   }
 ))
 
 #' @rdname Activation
 #' @export
-Linear <- Activation$new(\(x) x, \(x) 1)
+Linear <- Activation$new("Linear", \(x) x, \(x) 1)
 
 #' @rdname Activation
 #' @export
-Sigmoid <- Activation$new(\(x) 1/(1+exp(-x)), \(x) x*(1-x))
+Sigmoid <- Activation$new("Sigmoid", \(x) 1/(1+exp(-x)), \(x) x*(1-x))
 
 #' @rdname Activation
 #' @export
-ReLU <- Activation$new(\(x) {x[x<0] <- 0; x}, \(x) as.integer(x>0))
+ReLU <- Activation$new("ReLU", \(x) {x[x<0] <- 0; x}, \(x) as.integer(x>0))

@@ -46,7 +46,7 @@ Dense <- R6::R6Class("Dense", inherit = Layer, list(
   initialize = function(units, activation = Linear){
     self$units <- units
     self$activation <- activation
-    NULL
+    invisible()
   },
 
   #' @description Randomly initialises weights based on the number of input nodes.
@@ -56,7 +56,7 @@ Dense <- R6::R6Class("Dense", inherit = Layer, list(
     self$weights <- sqrt(1/input_units) * matrix(
       runif(input_units * self$units), self$units
     )
-    NULL
+    invisible()
   },
 
   #' @description Feeds an input through the layer.

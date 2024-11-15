@@ -9,7 +9,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  dev="png",
+  dev.args=list(type="cairo"),
+  dpi=96
 )
 ```
 
@@ -33,7 +36,7 @@ devtools::install_github("hrryt/percept")
 
 This is a basic example of a feed-forward neural network using the MNIST database:
 
-```{r}
+```{r train}
 library(percept)
 
 read_mnist <- function(file) {
@@ -64,7 +67,7 @@ system.time(
 
 How does the model perform on the test set?
 
-```{r}
+```{r test}
 correct_test <- factor(mnist_test[, 1], levels = digits)
 expected_test <- to_categorical(correct_test)
 input_test <- mnist_test[, -1] / 255
@@ -74,3 +77,18 @@ predicted_test <- to_factor(output_test, labels=digits)
 mean(predicted_test == correct_test)
 ```
 
+What does the model look like?
+
+```{r graph}
+plot(model)
+```
+
+How does each input node tend to contribute to the first hidden layer?
+
+```{r raster}
+w <- colSums(model$layers[[1]]$weights)
+w <- (w / max(abs(w)) + 1) / 2
+colors <- rgb(colorRamp(c("red", "white", "blue"))(w), maxColorValue = 255)
+raster <- as.raster(matrix(colors, 28, 28))
+plot(raster)
+```

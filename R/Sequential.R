@@ -43,6 +43,19 @@ Sequential <- R6::R6Class("Sequential", list(
   },
 
   #' @description
+  #' Plots the structure of the model. Calls `plot.Sequential()`.
+  #'
+  #' @param max_nodes Maximum number of nodes plotted for each layer.
+  #' @param main Title of the plot.
+  #' @param colors Colors of negative, zero, and positive weights respectively.
+  #' @param ... Ignored.
+  #' @return `NULL`.
+  plot = function(max_nodes = 30, main = "Sequential Model",
+                  colors = c("red", "white", "blue"), ...) {
+    plot(self, max_nodes = max_nodes, main = main, colors = colors, ...)
+  },
+
+  #' @description
   #' Adds a [Layer] to the model.
   #'
   #' @param layer [Layer].
@@ -54,7 +67,7 @@ Sequential <- R6::R6Class("Sequential", list(
       self$layers[[n_layers]]$units
     if(!is.null(last_units)) layer$create_weights(last_units)
     self$layers <- c(self$layers, list(layer))
-    NULL
+    invisible()
   },
 
   #' @description
@@ -74,6 +87,11 @@ Sequential <- R6::R6Class("Sequential", list(
   #' @param input Numeric array of size `(batch_size, input_units)`.
   #' @return Output of the last [Layer] in the model, of size `(batch_size, output_units)`.
   feed_forward = function(input){
+    if(is.null(self$input_units)) {
+      self$input_units <- ncol(input)
+    } else {
+      stopifnot(ncol(input) == self$input_units)
+    }
     for (layer in self$layers) input <- layer$feed_forward(input)
     input
   },
@@ -98,7 +116,7 @@ Sequential <- R6::R6Class("Sequential", list(
       for(i in batch) dw <- dw + layer$deltas[i, ] %o% layer$input[i, ]
       layer$weights <- layer$weights - self$learning_rate * dw / batch_size
     }
-    NULL
+    invisible()
   },
 
   #' @description
@@ -123,6 +141,6 @@ Sequential <- R6::R6Class("Sequential", list(
       self$feed_forward(input[rows, , drop=FALSE])
       self$backpropagate(expected[rows, , drop=FALSE])
     }
-    NULL
+    invisible()
   }
 ))

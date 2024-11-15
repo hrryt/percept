@@ -8,11 +8,11 @@
 \alias{ReLU}
 \title{Activation Function}
 \format{
-An object of class \code{Activation} (inherits from \code{R6}) of length 5.
+An object of class \code{Activation} (inherits from \code{R6}) of length 6.
 
-An object of class \code{Activation} (inherits from \code{R6}) of length 5.
+An object of class \code{Activation} (inherits from \code{R6}) of length 6.
 
-An object of class \code{Activation} (inherits from \code{R6}) of length 5.
+An object of class \code{Activation} (inherits from \code{R6}) of length 6.
 }
 \usage{
 Linear
@@ -44,6 +44,8 @@ model2$layers
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
+\item{\code{name}}{Name of the activation function.}
+
 \item{\code{fun}}{Activation function.}
 
 \item{\code{der}}{Derivative function of the activation function.}
@@ -63,12 +65,14 @@ model2$layers
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Activation$new(fun, der)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Activation$new(name, fun, der)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{name}}{Name of the activation function.}
+
 \item{\code{fun}}{Activation function.}
 
 \item{\code{der}}{Derivative function of the activation function.}

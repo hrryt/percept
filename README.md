@@ -75,5 +75,25 @@ input_test <- mnist_test[, -1] / 255
 output_test <- model$feed_forward(input_test)
 predicted_test <- to_factor(output_test, labels=digits)
 mean(predicted_test == correct_test)
-#> [1] 0.9158
+#> [1] 0.9103
 ```
+
+What does the model look like?
+
+``` r
+plot(model)
+```
+
+<img src="man/figures/README-graph-1.png" width="100%" />
+
+How does each input node tend to contribute to the first hidden layer?
+
+``` r
+w <- colSums(model$layers[[1]]$weights)
+w <- (w / max(abs(w)) + 1) / 2
+colors <- rgb(colorRamp(c("red", "white", "blue"))(w), maxColorValue = 255)
+raster <- as.raster(matrix(colors, 28, 28))
+plot(raster)
+```
+
+<img src="man/figures/README-raster-1.png" width="100%" />

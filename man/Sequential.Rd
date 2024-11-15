@@ -45,6 +45,7 @@ model2$layers
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Sequential-new}{\code{Sequential$new()}}
+\item \href{#method-Sequential-plot}{\code{Sequential$plot()}}
 \item \href{#method-Sequential-add}{\code{Sequential$add()}}
 \item \href{#method-Sequential-pop}{\code{Sequential$pop()}}
 \item \href{#method-Sequential-feed_forward}{\code{Sequential$feed_forward()}}
@@ -93,6 +94,37 @@ model2$layers
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Sequential-plot"></a>}}
+\if{latex}{\out{\hypertarget{method-Sequential-plot}{}}}
+\subsection{Method \code{plot()}}{
+Plots the structure of the model. Calls \code{plot.Sequential()}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Sequential$plot(
+  max_nodes = 30,
+  main = "Sequential Model",
+  colors = c("red", "white", "blue"),
+  ...
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{max_nodes}}{Maximum number of nodes plotted for each layer.}
+
+\item{\code{main}}{Title of the plot.}
+
+\item{\code{colors}}{Colors of negative, zero, and positive weights respectively.}
+
+\item{\code{...}}{Ignored.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{NULL}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Sequential-add"></a>}}

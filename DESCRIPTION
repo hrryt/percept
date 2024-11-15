@@ -7,8 +7,10 @@ Description: Build feed-forward neural networks with multiple hidden layers and 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Imports: 
-    R6
+    R6,
+    grDevices,
+    grid
 URL: https://github.com/hrryt/percept
 BugReports: https://github.com/hrryt/percept/issues
