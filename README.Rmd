@@ -11,8 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%",
   dev="png",
-  dev.args=list(type="cairo"),
-  dpi=96
+  dev.args=list(type="cairo")
 )
 ```
 
@@ -79,7 +78,7 @@ mean(predicted_test == correct_test)
 
 What does the model look like?
 
-```{r graph}
+```{r graph, dpi=300}
 plot(model)
 ```
 

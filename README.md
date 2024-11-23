@@ -62,7 +62,7 @@ system.time(
 #> 1800 
 #> 2000
 #>    user  system elapsed 
-#>   19.20    1.58   20.96
+#>  24.557   0.053  24.616
 ```
 
 How does the model perform on the test set?
@@ -75,7 +75,7 @@ input_test <- mnist_test[, -1] / 255
 output_test <- model$feed_forward(input_test)
 predicted_test <- to_factor(output_test, labels=digits)
 mean(predicted_test == correct_test)
-#> [1] 0.9103
+#> [1] 0.9134
 ```
 
 What does the model look like?
